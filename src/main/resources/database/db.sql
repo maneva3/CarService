@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS car_center;
-DROP TABLE IF EXISTS appointment;
+-- DROP TABLE IF EXISTS service_job;
+-- DROP TABLE IF EXISTS appointment;
 
 CREATE TABLE car_brand
 (
@@ -66,6 +66,22 @@ CREATE TABLE appointment
     FOREIGN KEY (customer_email) REFERENCES customer (email),
     FOREIGN KEY (car_center_id) REFERENCES car_center (id),
     FOREIGN KEY (car_license_plate) REFERENCES car (license_plate)
+);
+
+CREATE TABLE service_job
+(
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_email VARCHAR(30) NOT NULL,
+    type           VARCHAR     NOT NULL,
+    date_started   DATE,
+    date_finished  DATE,
+    price          DECIMAL(10, 2) CHECK (price >= 0),
+    state          VARCHAR     NOT NULL,
+    appointment_id INTEGER,
+    FOREIGN KEY (employee_email) REFERENCES employee (email),
+    FOREIGN KEY (type) REFERENCES job_type (name),
+    FOREIGN KEY (state) REFERENCES job_state (name),
+    FOREIGN KEY (appointment_id) REFERENCES appointment (id)
 );
 
 INSERT INTO car_brand (name)
