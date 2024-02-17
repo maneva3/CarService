@@ -18,27 +18,27 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 public class AppointmentDTO {
-    private Long id;
+	private Integer id;
 
-    @NotEmpty(message = "The customer must be set!")
-    private Customer customer;
+	@NotEmpty(message = "The customer must be set!")
+	private Customer customer;
 
-    @NotEmpty(message = "The car center must be set!")
-    private CarCenter carCenter;
+	@NotEmpty(message = "The car center must be set!")
+	private CarCenter carCenter;
 
-    @NotEmpty(message = "The car must be set!")
-    private Car car;
+	@NotEmpty(message = "The car must be set!")
+	private Car car;
 
-    @NotEmpty(message = "The date created must be set!")
-    private final LocalDate dateCreated = LocalDate.now();
+	@NotEmpty(message = "The date created must be set!")
+	private final LocalDate dateCreated = LocalDate.now();
 
-    @NotEmpty(message = "The date of appointment must be set!")
-    @Future(message = "The date of appointment must be in the future!")
-    private LocalDate dateOfAppointment;
+	@NotEmpty(message = "The date of appointment must be set!")
+	@Future(message = "The date of appointment must be in the future!")
+	private LocalDate dateOfAppointment;
 
-    @NotEmpty(message = "The service jobs must be set!")
-    private Set<ServiceJob> serviceJobs;
+	@NotEmpty(message = "The service jobs must be set!")
+	private Set<ServiceJob> serviceJobs;
 
-    @BooleanFlag
-    private Boolean hasPassed = false;
+	@BooleanFlag
+	private Boolean hasPassed = false;
 }

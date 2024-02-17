@@ -18,37 +18,37 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "service_job")
 public class ServiceJob {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @ManyToOne(targetEntity = Employee.class)
-    @JoinColumn(name = "employee")
-    private Employee employee;
+	@ManyToOne(targetEntity = Employee.class)
+	@JoinColumn(name = "employee")
+	private Employee employee;
 
-    @Column(name = "type")
-    @Enumerated(EnumType.STRING)
-    @NotEmpty(message = "The type must be set!")
-    private JobType type;
+	@Column(name = "type")
+	@Enumerated(EnumType.STRING)
+	@NotEmpty(message = "The type must be set!")
+	private JobType type;
 
-    @Column(name = "date_started")
-    private LocalDate dateStarted;
+	@Column(name = "date_started")
+	private LocalDate dateStarted;
 
-    @Column(name = "date_finished")
-    private LocalDate dateFinished;
+	@Column(name = "date_finished")
+	private LocalDate dateFinished;
 
-    @Column(name = "price")
-    @PositiveOrZero(message = "The price can't be negative")
-    private BigDecimal price;
+	@Column(name = "price")
+	@PositiveOrZero(message = "The price can't be negative")
+	private BigDecimal price;
 
-    @Column(name = "state")
-    @Enumerated(EnumType.STRING)
-    @NotEmpty(message = "The state must be set!")
-    private JobState state = JobState.PENDING;
+	@Column(name = "state")
+	@Enumerated(EnumType.STRING)
+	@NotEmpty(message = "The state must be set!")
+	private JobState state = JobState.PENDING;
 
-    @ManyToOne(targetEntity = Appointment.class)
-    @JoinColumn(name = "appointment_id")
-    private Appointment appointment;
+	@ManyToOne(targetEntity = Appointment.class)
+	@JoinColumn(name = "appointment_id")
+	private Appointment appointment;
 
 }

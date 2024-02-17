@@ -16,23 +16,23 @@ import java.util.Set;
 @Entity
 @Table(name = "car_center")
 public class CarCenter {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
 
-    @Column(name = "name")
-    @NotBlank(message = "The name cannot be empty")
-    @Size(max = 20, message = "The name cannot be longer than {max} characters")
-    private String name;
+	@Column(name = "name")
+	@NotBlank(message = "The name cannot be empty")
+	@Size(max = 20, message = "The name cannot be longer than {max} characters")
+	private String name;
 
-    @Column(name = "working_with_brand")
-    @Enumerated(EnumType.STRING)
-    private CarBrand workWithBrand;
+	@Column(name = "working_with_brand")
+	@Enumerated(EnumType.STRING)
+	private CarBrand workWithBrand;
 
-    @OneToMany(targetEntity = Appointment.class, mappedBy = "carCenter")
-    private Set<Appointment> appointments;
+	@OneToMany(targetEntity = Appointment.class, mappedBy = "carCenter")
+	private Set<Appointment> appointments;
 
-    @OneToMany(targetEntity = Employee.class, mappedBy = "workingAt")
-    private Set<Employee> employees;
+	@OneToMany(targetEntity = Employee.class, mappedBy = "workingAt")
+	private Set<Employee> employees;
 }
