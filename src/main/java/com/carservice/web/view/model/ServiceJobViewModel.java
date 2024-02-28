@@ -1,27 +1,20 @@
-package com.carservice.dto;
+package com.carservice.web.view.model;
 
 import com.carservice.data.entities.Appointment;
 import com.carservice.data.entities.Employee;
 import com.carservice.data.enums.JobState;
 import com.carservice.data.enums.JobType;
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class ServiceJobDTO {
-	private Integer id;
-
+public class ServiceJobViewModel {
 	@NotEmpty(message = "The customer must be set!")
 	private Employee employee;
 
@@ -30,8 +23,7 @@ public class ServiceJobDTO {
 	private JobType type;
 
 	private LocalDate dateStarted;
-
-	@Column(name = "date_finished")
+	
 	private LocalDate dateFinished;
 
 	@PositiveOrZero(message = "The price can't be negative")
@@ -42,5 +34,4 @@ public class ServiceJobDTO {
 	private JobState state = JobState.PENDING;
 
 	private Appointment appointment;
-
 }
