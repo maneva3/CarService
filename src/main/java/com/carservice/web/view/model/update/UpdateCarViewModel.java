@@ -1,4 +1,4 @@
-package com.carservice.web.view.model;
+package com.carservice.web.view.model.update;
 
 import com.carservice.data.entities.Customer;
 import jakarta.validation.constraints.NotBlank;

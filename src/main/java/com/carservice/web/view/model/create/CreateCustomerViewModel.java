@@ -1,4 +1,4 @@
-package com.carservice.web.view.model;
+package com.carservice.web.view.model.create;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

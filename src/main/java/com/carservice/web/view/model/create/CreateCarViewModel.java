@@ -1,4 +1,4 @@
-package com.carservice.web.view.model;
+package com.carservice.web.view.model.create;
 
 import com.carservice.data.entities.Customer;
 import com.carservice.data.enums.CarBrand;
