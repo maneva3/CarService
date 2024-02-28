@@ -1,6 +1,8 @@
 package com.carservice.services;
 
 import com.carservice.data.entities.ServiceJob;
+import com.carservice.data.enums.JobState;
+import com.carservice.data.enums.JobType;
 import com.carservice.dto.ServiceJobDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -15,7 +17,7 @@ public interface ServiceJobService {
 
 	ServiceJob create(@Valid ServiceJobDTO serviceJobDTO);
 
-	ServiceJob update(@Min(1) int id, @Valid ServiceJobDTO serviceJobDTO);
+//	ServiceJob update(@Min(1) int id, @Valid ServiceJobDTO serviceJobDTO);
 
 	void delete(@Min(1) int id);
 
@@ -23,9 +25,9 @@ public interface ServiceJobService {
 
 	List<ServiceJobDTO> findServiceJobsByEmployeeEmail(String email);
 
-	List<ServiceJobDTO> findServiceJobsByState(String state);
+	List<ServiceJobDTO> findServiceJobsByState(JobState state);
 
-	List<ServiceJobDTO> findServiceJobsByType(String type);
+	List<ServiceJobDTO> findServiceJobsByType(JobType type);
 
 	List<ServiceJobDTO> findServiceJobByAppointmentId(@Min(1) int id);
 

@@ -15,18 +15,22 @@ import java.util.Set;
 @Entity
 @Table(name = "employee")
 public class Employee extends User {
-    @ElementCollection(targetClass = JobType.class, fetch = FetchType.EAGER)
-    @Column(name = "qualifications")
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "The qualifications must be set!")
-    private Set<JobType> qualifications;
+	@ElementCollection(targetClass = JobType.class, fetch = FetchType.EAGER)
+	@Column(name = "qualifications")
+	@Enumerated(EnumType.STRING)
+	@NotNull(message = "The qualifications must be set!")
+	private Set<JobType> qualifications;
 
-    @ManyToOne(targetEntity = CarCenter.class)
-    @JoinColumn(name = "working_at")
-    @NotNull(message = "The car center must be set!")
-    private CarCenter workingAt;
+	@ManyToOne(targetEntity = CarCenter.class)
+	@JoinColumn(name = "working_at")
+	@NotNull(message = "The car center must be set!")
+	private CarCenter workingAt;
 
-    @OneToMany(targetEntity = ServiceJob.class, mappedBy = "employee")
-    @Enumerated(EnumType.STRING)
-    private Set<ServiceJob> workingOn;
+	@OneToMany(targetEntity = ServiceJob.class, mappedBy = "employee")
+	@Enumerated(EnumType.STRING)
+	private Set<ServiceJob> workingOn;
+
+	public void changeLastName(String lastName) {
+		this.changeLastName(lastName);
+	}
 }

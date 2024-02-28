@@ -1,6 +1,7 @@
 package com.carservice.services;
 
 import com.carservice.data.entities.Car;
+import com.carservice.data.enums.CarBrand;
 import com.carservice.dto.CarDTO;
 import jakarta.validation.Valid;
 
@@ -20,13 +21,15 @@ public interface CarService {
 
 	void deleteCar(String vin);
 
-	List<CarDTO> findCarsByModel(String model);
+	List<CarDTO> findCarsByBrand(CarBrand brand);
 
-	List<CarDTO> findCarsByOwner(String ownerEmail);
+	List<CarDTO> findCarsByBrandAndModel(CarBrand brand, String model);
+
+	List<CarDTO> findCarsByOwnerEmail(String ownerEmail);
+
+	List<CarDTO> findCarsByOwnerPhoneNumber(String ownerPhoneNumber);
 
 	List<CarDTO> findCarsByModelAndYear(String model, LocalDate year);
-
-	List<CarDTO> findCarsByBrand(String brand);
 
 	List<CarDTO> findCarsByYear(LocalDate year);
 }

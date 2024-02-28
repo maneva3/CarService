@@ -1,21 +1,25 @@
 package com.carservice.repository;
 
 import com.carservice.data.entities.Appointment;
-import com.carservice.data.entities.ServiceJob;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
-	List<Appointment> findAllByCustomer_Email(String email);
+	List<Appointment> findAllByCustomerEmail(String email);
 
-	List<Appointment> findAllByCarCenterName(String name);
+	List<Appointment> findAllByCustomerFirstName(String firstName);
 
-	List<Appointment> findAllByCar_LicensePlate(String licensePlate);
+	List<Appointment> findAllByCarCenterId(int carCenterId);
 
-	List<Appointment> findAllByDateOfAppointment(String date);
+	List<Appointment> findAllByCarLicensePlate(String licensePlate);
 
-	List<Appointment> findAllByServiceJobs(ServiceJob serviceJobs);
+	List<Appointment> findAllByDateOfAppointment(LocalDate date);
+
+	List<Appointment> findAllByDateCreated(LocalDate date);
 
 	List<Appointment> findAllByHasPassedTrue();
+
+	List<Appointment> findAllByHasPassedFalse();
 }

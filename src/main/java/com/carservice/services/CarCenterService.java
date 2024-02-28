@@ -1,6 +1,7 @@
 package com.carservice.services;
 
 import com.carservice.data.entities.CarCenter;
+import com.carservice.data.enums.CarBrand;
 import com.carservice.dto.CarCenterDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -14,9 +15,9 @@ public interface CarCenterService {
 
 	CarCenter create(@Valid CarCenterDTO carCenterDTO);
 
-	CarCenter update(@Min(1) int id, @Valid CarCenterDTO carCenterDTO);
+//	CarCenter update(@Min(1) int id, @Valid CarCenterDTO carCenterDTO);
 
 	void delete(@Min(1) int id);
 
-	List<CarCenterDTO> findCarCenterByWorkingWithBrand(String brand);
+	List<CarCenterDTO> findCarCenterByWorkingWithBrand(CarBrand brand);
 }

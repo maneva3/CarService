@@ -1,6 +1,7 @@
 package com.carservice.services;
 
 import com.carservice.data.entities.Employee;
+import com.carservice.data.enums.JobType;
 import com.carservice.dto.EmployeeDTO;
 import jakarta.validation.Valid;
 
@@ -15,13 +16,15 @@ public interface EmployeeService {
 
 	Employee create(@Valid EmployeeDTO employeeDTO);
 
-	Employee updateLastName(@Valid EmployeeDTO employeeDTO, String lastName);
+	Employee updateLastName(@Valid String email, String lastName);
 
 	List<EmployeeDTO> findEmployeesByFirstName(String firstName);
 
 	List<EmployeeDTO> findEmployeesByLastName(String lastName);
 
-	List<EmployeeDTO> findEmployeesByQualification(String qualification);
+	EmployeeDTO findEmployeeByFirstNameAndLastName(String firstName, String lastName);
+
+	List<EmployeeDTO> findEmployeesByQualification(JobType qualification);
 
 	List<EmployeeDTO> findEmployeesByCarService(String carServiceName);
 }

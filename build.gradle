@@ -21,7 +21,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.hibernate:hibernate-core:5.6.5.Final'
-    implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
+    implementation 'org.modelmapper:modelmapper:3.2.0'
     implementation files('src/main/resources/sqlite-tools-linux-x64-3440200.zip')
 
     compileOnly 'org.projectlombok:lombok:1.18.26'

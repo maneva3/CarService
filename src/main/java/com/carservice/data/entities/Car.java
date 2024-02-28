@@ -51,4 +51,8 @@ public class Car {
 
 	@OneToMany(targetEntity = Appointment.class, mappedBy = "car")
 	private Set<Appointment> appointments;
+
+	public void changeLicensePlate(String newLicensePlate) {
+		this.licensePlate = newLicensePlate;
+	}
 }

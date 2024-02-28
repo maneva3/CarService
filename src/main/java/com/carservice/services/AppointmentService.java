@@ -15,7 +15,7 @@ public interface AppointmentService {
 
 	Appointment createAppointment(@Valid AppointmentDTO appointmentDTO);
 
-	Appointment updateAppointment(@Min(1) int id, @Valid AppointmentDTO appointmentDTO);
+//	Appointment updateAppointment(@Min(1) int id, @Valid AppointmentDTO appointmentDTO);
 
 	void deleteAppointment(@Min(1) int id);
 
