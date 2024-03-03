@@ -1,4 +1,4 @@
-package com.carservice.web.view.model;
+package com.carservice.web.view.models;
 
 import com.carservice.data.entities.Appointment;
 import com.carservice.data.entities.Employee;
@@ -23,7 +23,7 @@ public class ServiceJobViewModel {
 	private JobType type;
 
 	private LocalDate dateStarted;
-	
+
 	private LocalDate dateFinished;
 
 	@PositiveOrZero(message = "The price can't be negative")

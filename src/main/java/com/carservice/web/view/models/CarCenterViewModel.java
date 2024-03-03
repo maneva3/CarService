@@ -1,4 +1,4 @@
-package com.carservice.web.view.model;
+package com.carservice.web.view.models;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

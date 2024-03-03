@@ -1,5 +1,6 @@
-package com.carservice.web.view.model.create;
+package com.carservice.web.view.models;
 
+import com.carservice.data.entities.Appointment;
 import com.carservice.data.entities.Customer;
 import com.carservice.data.enums.CarBrand;
 import jakarta.persistence.EnumType;
@@ -11,10 +12,11 @@ import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @NoArgsConstructor
-public class CreateCarViewModel {
-	String vin;
+public class CarViewModel {
+	private String vin;
 
 	@NotBlank(message = "License plate cannot be blank!")
 	@Pattern(regexp = "[A-Z]{2}[0-9]{4}[A-Z]{2}", message = "License plate must be in format: XX0000XX")
@@ -34,4 +36,6 @@ public class CreateCarViewModel {
 
 	@NotBlank(message = "Owner must be set!")
 	private Customer owner;
+
+	private Set<Appointment> appointments;
 }

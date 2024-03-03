@@ -1,4 +1,4 @@
-package com.carservice.web.view.model;
+package com.carservice.web.view.models;
 
 import com.carservice.data.entities.Appointment;
 import com.carservice.data.entities.Car;

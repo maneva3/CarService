@@ -1,4 +1,4 @@
-package com.carservice.web.view.model.create;
+package com.carservice.web.view.models.create;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class CreateEmployeeViewModel {
+public class CreateCustomerViewModel {
 	@Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
 	protected String email;
 
@@ -25,5 +25,4 @@ public class CreateEmployeeViewModel {
 	@Size(min = 8, max = 32, message = "The password must contain at least 8 characters!")
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "The password must contain at least 1 uppercase letter, 1 lowercase letter and 1 digit!")
 	protected String password;
-
 }
