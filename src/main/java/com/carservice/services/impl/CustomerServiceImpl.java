@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public CustomerDTO findCustomer(@Valid String customerEmail) {
+	public CustomerDTO findCustomerByEmail(@Valid String customerEmail) {
 		return convertToCustomerDTO(repository.findByEmail(customerEmail));
 	}
 

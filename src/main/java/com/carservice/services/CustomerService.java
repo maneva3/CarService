@@ -7,7 +7,7 @@ import java.util.List;
 public interface CustomerService {
 	List<CustomerDTO> allCustomers();
 
-	CustomerDTO findCustomer(String email);
+	CustomerDTO findCustomerByEmail(String email);
 
 	CustomerDTO findCustomerByPhoneNumber(String phoneNumber);
 

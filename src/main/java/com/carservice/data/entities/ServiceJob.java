@@ -2,13 +2,13 @@ package com.carservice.data.entities;
 
 import com.carservice.data.enums.JobState;
 import com.carservice.data.enums.JobType;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

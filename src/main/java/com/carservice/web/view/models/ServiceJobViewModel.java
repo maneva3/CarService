@@ -4,12 +4,12 @@ import com.carservice.data.entities.Appointment;
 import com.carservice.data.entities.Employee;
 import com.carservice.data.enums.JobState;
 import com.carservice.data.enums.JobType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

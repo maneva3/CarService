@@ -1,12 +1,12 @@
 package com.carservice.data.entities;
 
 import com.carservice.data.enums.JobType;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.util.Set;
 
 @AllArgsConstructor

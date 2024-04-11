@@ -1,13 +1,13 @@
 package com.carservice.data.entities;
 
 import com.carservice.data.enums.CarBrand;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.util.Set;
 
 @AllArgsConstructor

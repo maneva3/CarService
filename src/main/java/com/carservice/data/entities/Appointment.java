@@ -1,6 +1,5 @@
 package com.carservice.data.entities;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jdk.jfr.BooleanFlag;
@@ -8,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 

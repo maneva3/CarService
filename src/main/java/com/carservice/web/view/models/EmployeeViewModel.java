@@ -3,14 +3,14 @@ package com.carservice.web.view.models;
 import com.carservice.data.entities.CarCenter;
 import com.carservice.data.entities.ServiceJob;
 import com.carservice.data.enums.JobType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Set;
 
 @NoArgsConstructor

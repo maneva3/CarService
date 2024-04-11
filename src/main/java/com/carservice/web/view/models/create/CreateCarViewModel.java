@@ -2,14 +2,14 @@ package com.carservice.web.view.models.create;
 
 import com.carservice.data.entities.Customer;
 import com.carservice.data.enums.CarBrand;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
 @NoArgsConstructor
