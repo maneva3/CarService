@@ -26,7 +26,7 @@ public class CarCenter {
 	@Size(max = 20, message = "The name cannot be longer than {max} characters")
 	private String name;
 
-	@Column(name = "working_with_brand")
+	@Column(name = "work_with_brand")
 	@Enumerated(EnumType.STRING)
 	private CarBrand workWithBrand;
 

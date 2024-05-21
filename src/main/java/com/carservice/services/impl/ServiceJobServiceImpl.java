@@ -52,10 +52,10 @@ public class ServiceJobServiceImpl implements ServiceJobService {
 		repository.deleteById(id);
 	}
 
-	@Override
-	public List<ServiceJobDTO> findServiceJobsByCarVin(String vin) {
-		return repository.findAllByCarVin(vin).stream().map(this::convertToServiceJobDTO).toList();
-	}
+	//@Override
+	//public List<ServiceJobDTO> findServiceJobsByCarVin(String vin) {
+	//	return repository.findAllByCarVin(vin).stream().map(this::convertToServiceJobDTO).toList();
+	//}
 
 	@Override
 	public List<ServiceJobDTO> findServiceJobsByEmployeeEmail(String email) {

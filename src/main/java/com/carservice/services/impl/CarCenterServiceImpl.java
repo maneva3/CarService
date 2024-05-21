@@ -53,6 +53,6 @@ public class CarCenterServiceImpl implements CarCenterService {
 	@Override
 	public List<CarCenterDTO> findCarCenterByWorkingWithBrand(CarBrand brand) {
 
-		return repository.findByCarBrand(brand).stream().map(this::convertToCarCenterDTO).toList();
+		return repository.findByWorkWithBrand(brand).stream().map(this::convertToCarCenterDTO).toList();
 	}
 }

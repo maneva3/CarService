@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ServiceJobRepository extends JpaRepository<ServiceJob, Integer> {
-	List<ServiceJob> findAllByCarVin(String vin);
+	//List<ServiceJob> findAllByCarVin(String vin);
 
 	List<ServiceJob> findAllByEmployeeEmail(String email);
 

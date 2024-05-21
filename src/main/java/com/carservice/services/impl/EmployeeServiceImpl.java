@@ -68,11 +68,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<EmployeeDTO> findEmployeesByQualification(JobType qualification) {
-		return repository.findByQualification(qualification).stream().map(this::convertToEmployeeDTO).toList();
+		return repository.findAllByQualification(qualification).stream().map(this::convertToEmployeeDTO).toList();
 	}
 
 	@Override
 	public List<EmployeeDTO> findEmployeesByCarService(String carServiceName) {
-		return repository.findByCarCenter(carServiceName).stream().map(this::convertToEmployeeDTO).toList();
+		return repository.findAllByCarCenterName(carServiceName).stream().map(this::convertToEmployeeDTO).toList();
 	}
 }

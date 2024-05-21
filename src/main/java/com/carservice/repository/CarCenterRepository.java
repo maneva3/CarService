@@ -7,7 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CarCenterRepository extends JpaRepository<CarCenter, Integer> {
-	List<CarCenter> findByCarBrand(CarBrand carBrand);
-
-
+	List<CarCenter> findByWorkWithBrand(CarBrand carBrand);
 }

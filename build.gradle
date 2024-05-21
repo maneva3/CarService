@@ -19,18 +19,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    //implementation 'org.hibernate:hibernate-core:5.4.32.Final'
     implementation 'org.modelmapper:modelmapper:3.2.0'
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-    //implementation 'org.xerial:sqlite-jdbc:3.44.1.0'
-    runtimeOnly 'org.xerial:sqlite-jdbc:3.44.1.0'
-    implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
+
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-    //implementation files('src/main/resources/sqlite-tools-linux-x64-3440200.zip')
+    implementation 'org.xerial:sqlite-jdbc:3.41.2.2'
+    implementation 'com.zsoltfabok:sqlite-dialect:1.0'
+    implementation 'org.hibernate:hibernate-core:5.4.30.Final'
 
     compileOnly 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'

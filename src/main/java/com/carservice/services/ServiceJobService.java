@@ -21,7 +21,7 @@ public interface ServiceJobService {
 
 	void delete(@Min(1) int id);
 
-	List<ServiceJobDTO> findServiceJobsByCarVin(String vin);
+	//List<ServiceJobDTO> findServiceJobsByCarVin(String vin);
 
 	List<ServiceJobDTO> findServiceJobsByEmployeeEmail(String email);
 

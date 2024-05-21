@@ -1,5 +1,12 @@
--- DROP TABLE IF EXISTS service_job;
--- DROP TABLE IF EXISTS appointment;
+DROP TABLE IF EXISTS car_brand;
+DROP TABLE IF EXISTS job_state;
+DROP TABLE IF EXISTS job_type;
+DROP TABLE IF EXISTS car_center;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS car;
+DROP TABLE IF EXISTS appointment;
+DROP TABLE IF EXISTS service_job;
 
 CREATE TABLE car_brand
 (
@@ -18,10 +25,10 @@ CREATE TABLE job_type
 
 CREATE TABLE car_center
 (
-    id                 INTEGER PRIMARY KEY AUTOINCREMENT,
-    name               VARCHAR(20) NOT NULL,
-    working_with_brand VARCHAR(20),
-    FOREIGN KEY (working_with_brand) REFERENCES car_brand (name)-- other CarCenter-specific columns
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    name            VARCHAR(20) NOT NULL,
+    work_with_brand VARCHAR(20),
+    FOREIGN KEY (work_with_brand) REFERENCES car_brand (name)-- other CarCenter-specific columns
 );
 
 CREATE TABLE customer
@@ -113,7 +120,7 @@ VALUES ('Brake Repair'),
        ('Wheel Alignment'),
        ('Windshield Replacement');
 
-INSERT INTO car_center (name, working_with_brand)
+INSERT INTO car_center (name, work_with_brand)
 VALUES ('Autospace', 'Honda'),
        ('Car Fixers', NULL),
        ('Wheels Doc', NULL);
