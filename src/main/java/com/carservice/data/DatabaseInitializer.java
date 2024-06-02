@@ -28,14 +28,6 @@ public class DatabaseInitializer implements CommandLineRunner {
 				// No tables exist, so the database is not initialized
 				ScriptUtils.executeSqlScript(connection, new ClassPathResource("data.sql"));
 			}
-//			else {
-//				// The database is initialized, so execute the update script
-//				executeUpdateScript(connection);
-//			}
 		}
 	}
-
-//	private void executeUpdateScript(Connection connection) throws Exception {
-//		ScriptUtils.executeSqlScript(connection, new ClassPathResource("database/update.sql"));
-//	}
 }
