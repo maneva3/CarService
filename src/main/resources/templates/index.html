@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+<div th:class="text-center">
+    <h1 th:text="${welcome}"></h1>
+    <br>
+    <h3 th:text="${loginOrRegister}"></h3>
+    <a th:href="@{/login}">
+        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+    </a>
+    <a th:href="@{/register}">
+        <button type="submit" class="btn btn-outline-primary btn-lg">Register</button>
+    </a>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>
