@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="~{fragments :: head}"></head>
+<head th:replace="~{fragments :: head}">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<header class="header-nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/carCenters}">Car Centers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/serviceJobs}">Service Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/employees}">Employees</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 <body>
-<div th:class="text-center">
-    <h1 th:text="${welcome}"></h1>
-    <br>
-    <h3 th:text="${loginOrRegister}"></h3>
-    <a th:href="@{/login}">
-        <button type="submit" class="btn btn-primary btn-lg">Login</button>
-    </a>
-    <a th:href="@{/register}">
-        <button type="submit" class="btn btn-outline-primary btn-lg">Register</button>
-    </a>
+<div class="container text-center">
+    <h1 class="mt-5 welcome-text" th:text="${welcome}"></h1>
+    <p class="lead display-3 font-weight-bold">Welcome to CarCenter, the best place for your car needs!</p>
+    <div class="mt-5">
+        <h3 th:text="${loginOrRegister}"></h3>
+        <a th:href="@{/login}" class="btn btn-primary btn-lg">Login</a>
+        <a th:href="@{/register}" class="btn btn-outline-primary btn-lg">Register</a>
+    </div>
 </div>
 <footer th:replace="~{fragments :: footer}"></footer>
 </body>

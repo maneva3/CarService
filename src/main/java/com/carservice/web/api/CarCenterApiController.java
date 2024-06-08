@@ -21,7 +21,7 @@ public class CarCenterApiController {
 
 	@GetMapping("/")
 	public List<CarCenterDTO> allCarCenters() {
-		return carCenterService.allCarCenters();
+		return carCenterService.findAllCarCenters();
 	}
 
 	@GetMapping("/{id}")

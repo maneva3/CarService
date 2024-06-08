@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Min;
 import java.util.List;
 
 public interface CarCenterService {
-	List<CarCenterDTO> allCarCenters();
+	List<CarCenterDTO> findAllCarCenters();
 
 	CarCenterDTO findCarCenterById(@Min(1) int id);
 

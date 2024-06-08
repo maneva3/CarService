@@ -24,7 +24,7 @@ public class CarCenterServiceImpl implements CarCenterService {
 	}
 
 	@Override
-	public List<CarCenterDTO> allCarCenters() {
+	public List<CarCenterDTO> findAllCarCenters() {
 		return repository.findAll().stream().map(this::convertToCarCenterDTO).toList();
 	}
 

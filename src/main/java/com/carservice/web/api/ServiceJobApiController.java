@@ -22,7 +22,7 @@ public class ServiceJobApiController {
 
 	@GetMapping("/")
 	public List<ServiceJobDTO> allServiceJobs() {
-		return serviceJobService.allServiceJobs();
+		return serviceJobService.findAllServiceJobs();
 	}
 
 	@GetMapping("/{id}")

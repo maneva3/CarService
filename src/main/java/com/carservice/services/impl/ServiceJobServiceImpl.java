@@ -26,7 +26,7 @@ public class ServiceJobServiceImpl implements ServiceJobService {
 	}
 
 	@Override
-	public List<ServiceJobDTO> allServiceJobs() {
+	public List<ServiceJobDTO> findAllServiceJobs() {
 		return repository.findAll().stream().map(this::convertToServiceJobDTO).toList();
 	}
 

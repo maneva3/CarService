@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ServiceJobService {
-	List<ServiceJobDTO> allServiceJobs();
+	List<ServiceJobDTO> findAllServiceJobs();
 
 	ServiceJobDTO findServiceJobById(@Min(1) int id);
 
