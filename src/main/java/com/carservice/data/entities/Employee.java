@@ -2,9 +2,7 @@ package com.carservice.data.entities;
 
 import com.carservice.data.enums.JobType;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,6 +10,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(callSuper = true)
+@Getter
+@Setter
 @Entity
 @Table(name = "employee")
 public class Employee extends User {

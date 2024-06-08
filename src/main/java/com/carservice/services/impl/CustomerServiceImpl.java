@@ -29,6 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
+	public Customer save(Customer customer) {
+		return repository.save(customer);
+	}
+
+	@Override
 	public CustomerDTO findCustomerByEmail(@Valid String customerEmail) {
 		return convertToCustomerDTO(repository.findByEmail(customerEmail));
 	}

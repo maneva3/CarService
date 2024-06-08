@@ -1,8 +1,6 @@
 package com.carservice.data.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -12,6 +10,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(callSuper = true)
+@Getter
+@Setter
 @Entity
 @Table(name = "customer")
 public class Customer extends User {

@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS car_brand;
 DROP TABLE IF EXISTS job_state;
 DROP TABLE IF EXISTS job_type;
 DROP TABLE IF EXISTS car_center;
+DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS car;
@@ -31,21 +32,24 @@ CREATE TABLE car_center
     FOREIGN KEY (work_with_brand) REFERENCES car_brand (name)-- other CarCenter-specific columns
 );
 
-CREATE TABLE customer
+CREATE TABLE user
 (
     email        VARCHAR(30) PRIMARY KEY,
-    first_name   VARCHAR(15) NOT NULL,
-    last_name    VARCHAR(15) NOT NULL,
-    phone_number VARCHAR(13) NOT NULL
+    first_name   VARCHAR(15)  NOT NULL,
+    last_name    VARCHAR(15)  NOT NULL,
+    phone_number VARCHAR(13)  NOT NULL,
+    password     VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE customer
+(
+    email VARCHAR(30) PRIMARY KEY REFERENCES user (email)
 );
 
 CREATE TABLE employee
 (
-    email        VARCHAR(30) PRIMARY KEY,
-    first_name   VARCHAR(15) NOT NULL,
-    last_name    VARCHAR(15) NOT NULL,
-    phone_number VARCHAR(13) NOT NULL,
-    working_at   INTEGER     NOT NULL,
+    email      VARCHAR(30) PRIMARY KEY REFERENCES user (email),
+    working_at INTEGER NOT NULL,
     FOREIGN KEY (working_at) REFERENCES car_center (id)
 );
 
@@ -125,21 +129,47 @@ VALUES ('Autospace', 'Honda'),
        ('Car Fixers', NULL),
        ('Wheels Doc', NULL);
 
-INSERT INTO customer (email, first_name, last_name, phone_number)
-VALUES ('ivan.ivanov@gmail.com', 'Ivan', 'Ivanov', '+359123456789'),
-       ('m.petkova@mail.bg', 'Mariya', 'Petkova', '+359987654321'),
-       ('g_georgiev@abv.bg', 'Georgi', 'Georgiev', '+359876543210'),
-       ('stoyanova.elena@gmail.com', 'Elena', 'Stoyanova', '+359558325555'),
-       ('petar.h.dimitrov@mail.bg', 'Petar', 'Dimitrov', '+359123123123');
+INSERT INTO user (email, first_name, last_name, phone_number, password)
+VALUES ('ivan.ivanov@gmail.com', 'Ivan', 'Ivanov', '+359123456789',
+        '$2a$10$hrk6viZxBViCG9YMVQmnb.OIn2W.Rm4EBA9XDD268L1Fjfs0nJJXu'),
+       ('m.petkova@mail.bg', 'Mariya', 'Petkova', '+359987654321',
+        '$2a$10$15kPfILvlBl9rMNYyiOidOoL0/rYia.BBxcKyaMSXUSp09E/NuVya'),
+       ('g_georgiev@abv.bg', 'Georgi', 'Georgiev', '+359876543210',
+        '$2a$10$Hng3B1TjiyA8t7.L4/ASU.Y4bGCmwMWax/peoeT2huQUK8AGbP3Fq'),
+       ('stoyanova.elena@gmail.com', 'Elena', 'Stoyanova', '+359558325555',
+        '$2a$10$4WeFZDHCmvsRjTZS2xDXZOaP.G8rugc6I.eqNrQuyem10gim1re4q'),
+       ('petar.h.dimitrov@mail.bg', 'Petar', 'Dimitrov', '+359123123123',
+        '$2a$10$8HllG1QttBfIgZWvkFZ8H.EuX.033nV1DndyWaaLs0q960iOCtd7q'),
+       ('ivan-nikolov@gmail.com', 'Ivan', 'Nikolov', '+359888811111',
+        '$2a$10$6wf26z7WaeBKsZhu09wMCewZHrO7AUP1E/urgCljtL7KE0DazEt.q'),
+       ('georgiev.g@gmail.com', 'Grigor', 'Georgiev', '+359888822222',
+        '$2a$10$lrc4LtYTNrUzJiWSXi85k.3MMB6VCLzKbUPGem2s9vWbjc0X6K4gG'),
+       ('p.dimitrov@gmail.com', 'Pavel', 'Dimitrov', '+359888833333',
+        '$2a$10$8Ipdd8S.feF/AdPMUYtjpe1hS.QHZAz8woph5YsvxfAc/XbEQF6yO'),
+       ('stefanov92@mail.bg', 'Stefan', 'Stefanov', '+359888844444',
+        '$2a$10$cmzP8PFqudDJImyWF68GeeY1F6wOYxskbPyLV4aoxhCAXV6lvgUj.'),
+       ('nikolan@mail.bg', 'Nikola', 'Nikolov', '+359888855555',
+        '$2a$10$Vj/rw2ua4gp2xWF8ev9rPuzd7g9LE99Ol.y8.uEtgQB4gw/veVGlW'),
+       ('alexander.hr@abv.bg', 'Alexander', 'Petkov', '+359888866666',
+        '$2a$10$103FLNjm/BrceCTDxZ56WeQtcCylKLyjGG9Zg/cAFXeLXoy1CDzY.'),
+       ('petkov@gmail.com', 'Ivan', 'Petkov', '+359888877777',
+        '$2a$10$l2grgVl93wI/wWqm7XGEVevSteGRUB/tIh1vyVeGza6aldwV/3F3O');
 
-INSERT INTO employee (email, first_name, last_name, phone_number, working_at)
-VALUES ('ivan-nikolov@gmail.com', 'Ivan', 'Nikolov', '+359888811111', '1'),
-       ('georgiev.g@gmail.com', 'Grigor', 'Georgiev', '+359888822222', '2'),
-       ('p.dimitrov@gmail.com', 'Pavel', 'Dimitrov', '+359888833333', '3'),
-       ('stefanov92@mail.bg', 'Stefan', 'Stefanov', '+359888844444', '3'),
-       ('nikolan@mail.bg', 'Nikola', 'Nikolov', '+359888855555', '1'),
-       ('alexander.hr@abv.bg', 'Alexander', 'Petkov', '+359888866666', '2'),
-       ('petkov@gmail.com', 'Ivan', 'Petkov', '+359888877777', '2');
+INSERT INTO customer (email)
+VALUES ('ivan.ivanov@gmail.com'),
+       ('m.petkova@mail.bg'),
+       ('g_georgiev@abv.bg'),
+       ('stoyanova.elena@gmail.com'),
+       ('petar.h.dimitrov@mail.bg');
+
+INSERT INTO employee (email, working_at)
+VALUES ('ivan-nikolov@gmail.com', '1'),
+       ('georgiev.g@gmail.com', '2'),
+       ('p.dimitrov@gmail.com', '3'),
+       ('stefanov92@mail.bg', '3'),
+       ('nikolan@mail.bg', '1'),
+       ('alexander.hr@abv.bg', '2'),
+       ('petkov@gmail.com', '2');
 
 INSERT INTO car (vin, license_plate, brand, model, year, owner_email)
 VALUES ('123A456B789C01234', 'СА1234АВ', 'Audi', 'A4', '2022', 'ivan.ivanov@gmail.com'),

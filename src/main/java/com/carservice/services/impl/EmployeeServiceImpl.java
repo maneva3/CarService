@@ -45,6 +45,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
+	public Employee save(@Valid Employee employee) {
+		return repository.save(employee);
+	}
+
+	@Override
 	public Employee updateLastName(@Valid String email, String lastName) {
 		Employee employee = repository.findByEmail(email);
 		employee.changeLastName(lastName);

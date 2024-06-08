@@ -16,6 +16,8 @@ public interface EmployeeService {
 
 	Employee create(@Valid EmployeeDTO employeeDTO);
 
+	Employee save(@Valid Employee employee);
+
 	Employee updateLastName(@Valid String email, String lastName);
 
 	List<EmployeeDTO> findEmployeesByFirstName(String firstName);
