@@ -30,10 +30,6 @@ public class CarServiceImpl implements CarService {
 		return repository.findAll().stream().map(this::convertToCarDTO).toList();
 	}
 
-	@Override
-	public CarDTO findCarByVin(@Valid String vin) {
-		return convertToCarDTO(repository.findByVin(vin));
-	}
 
 	@Override
 	public CarDTO findCarByLicensePlate(String licensePlate) {

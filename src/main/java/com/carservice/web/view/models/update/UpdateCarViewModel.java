@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class UpdateCarViewModel {
-	String vin;
-
 	@NotBlank(message = "License plate cannot be blank!")
 	@Pattern(regexp = "[A-Z]{2}[0-9]{4}[A-Z]{2}", message = "License plate must be in format: XX0000XX")
 	private String licensePlate;

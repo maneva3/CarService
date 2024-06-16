@@ -11,8 +11,6 @@ import java.util.List;
 public interface CarService {
 	List<CarDTO> allCars();
 
-	CarDTO findCarByVin(String vin);
-
 	CarDTO findCarByLicensePlate(String licensePlate);
 
 	Car create(@Valid CarDTO carDTO);

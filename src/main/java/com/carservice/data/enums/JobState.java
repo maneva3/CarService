@@ -4,13 +4,18 @@ import lombok.Getter;
 
 @Getter
 public enum JobState {
-    COMPLETED("Completed"),
-    IN_PROGRESS("In Progress"),
-    PENDING("Pending");
+	COMPLETED,
+	IN_PROGRESS,
+	PENDING
 
-    private final String stateName;
-
-    JobState(String stateName) {
-        this.stateName = stateName;
-    }
+//	private final String stateName;
+//
+//	JobState(String stateName) {
+//		this.stateName = stateName;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return this.stateName;
+//	}
 }

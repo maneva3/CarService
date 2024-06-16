@@ -16,7 +16,6 @@ import java.util.Set;
 
 @NoArgsConstructor
 public class CarViewModel {
-	private String vin;
 
 	@NotBlank(message = "License plate cannot be blank!")
 	@Pattern(regexp = "[A-Z]{2}[0-9]{4}[A-Z]{2}", message = "License plate must be in format: XX0000XX")

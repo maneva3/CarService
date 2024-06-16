@@ -32,7 +32,7 @@ public class CarViewController {
 				.map(this::convertToCarViewModel)
 				.collect(Collectors.toList());
 		model.addAttribute("cars", cars);
-		return "/cars/cars";
+		return "/cars";
 	}
 
 //	@GetMapping("/create")
