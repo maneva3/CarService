@@ -8,7 +8,7 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 public interface EmployeeService {
-	List<EmployeeDTO> allEmployees();
+	List<EmployeeDTO> findAll();
 
 	EmployeeDTO findEmployeeByEmail(String email);
 

@@ -4,8 +4,9 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jdk.jfr.BooleanFlag;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,7 +14,8 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "appointment")
 public class Appointment {
@@ -39,11 +41,13 @@ public class Appointment {
 
 	@Column(name = "date_created")
 	@NotEmpty(message = "The date created must be set!")
+	@Convert(converter = LocalDateAttributeConverter.class)
 	private final LocalDate dateCreated = LocalDate.now();
 
 	@Column(name = "date_of_appointment")
 	@NotEmpty(message = "The date of appointment must be set!")
 	@Future(message = "The date of appointment must be in the future!")
+	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate dateOfAppointment;
 
 	@OneToMany(targetEntity = ServiceJob.class, mappedBy = "appointment")
@@ -54,4 +58,17 @@ public class Appointment {
 	@Column(name = "has_passed")
 	@BooleanFlag
 	private Boolean hasPassed = false;
+
+	@Override
+	public String toString() {
+		return "Appointment{" +
+				", customer=" + customer +
+				", carCenter=" + carCenter +
+				", car=" + car +
+				", dateCreated=" + dateCreated +
+				", dateOfAppointment=" + dateOfAppointment +
+				", serviceJobs=" + serviceJobs +
+				", hasPassed=" + hasPassed +
+				'}';
+	}
 }

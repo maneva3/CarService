@@ -9,6 +9,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -29,8 +30,10 @@ public class ServiceJobDTO {
 	@NotEmpty(message = "The type must be set!")
 	private JobType type;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateStarted;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date_finished")
 	private LocalDate dateFinished;
 

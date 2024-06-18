@@ -6,7 +6,10 @@ import com.carservice.data.enums.JobState;
 import com.carservice.data.enums.JobType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,6 +17,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class ServiceJobViewModel {
 	@NotEmpty(message = "The customer must be set!")
 	private Employee employee;
@@ -22,8 +27,10 @@ public class ServiceJobViewModel {
 	@NotEmpty(message = "The type must be set!")
 	private JobType type;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateStarted;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateFinished;
 
 	@PositiveOrZero(message = "The price can't be negative")

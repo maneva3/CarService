@@ -7,9 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,20 +15,22 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @ToString
 public class EmployeeDTO {
 	@Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
-	protected String email;
+	private String email;
 
 	@NotBlank(message = "The first name cannot be empty!")
-	protected String firstName;
+	private String firstName;
 
 	@NotBlank(message = "The last name cannot be empty!")
-	protected String lastName;
+	private String lastName;
 
 	@NotBlank(message = "The phone number cannot be empty!")
 	@Pattern(regexp = "^\\+359\\d{9}$", message = "The phone number must be in the format +359xxxxxxxxx!")
-	protected String phoneNumber;
+	private String phoneNumber;
 
 	@Enumerated(EnumType.STRING)
 	@NotNull(message = "The qualifications must be set!")

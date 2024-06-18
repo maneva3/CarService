@@ -1,23 +1,19 @@
-DROP TABLE IF EXISTS car_brand;
 DROP TABLE IF EXISTS car_center;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS employee_qualifications;
 DROP TABLE IF EXISTS car;
 DROP TABLE IF EXISTS appointment;
 DROP TABLE IF EXISTS service_job;
-
-CREATE TABLE car_brand
-(
-    name TEXT PRIMARY KEY
-);
 
 CREATE TABLE car_center
 (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
     name            TEXT NOT NULL,
-    work_with_brand TEXT,
-    FOREIGN KEY (work_with_brand) REFERENCES car_brand (name)
+    work_with_brand TEXT CHECK ( work_with_brand IN
+                                 ('AUDI', 'BMW', 'CHEVROLET', 'FORD', 'HONDA', 'HYUNDAI', 'MERCEDES-BENZ', 'NISSAN',
+                                  'TOYOTA', 'VOLKSWAGEN'))
 );
 
 CREATE TABLE user
@@ -41,14 +37,25 @@ CREATE TABLE employee
     FOREIGN KEY (working_at) REFERENCES car_center (id)
 );
 
+CREATE TABLE employee_qualifications
+(
+    employee_email TEXT                                                        NOT NULL,
+    qualifications TEXT CHECK ( qualifications IN
+                                ('BRAKE_REPAIR', 'DIAGNOSTICS', 'ENGINE_DIAGNOSTICS', 'FILTER_CHANGE',
+                                 'OIL_CHANGE', 'PAINT_AND_BODY_WORK', 'TRANSMISSION_SERVICE', 'TUNE_UP',
+                                 'WHEEL_ALIGNMENT', 'WINDSHIELD_REPLACEMENT')) NOT NULL,
+    FOREIGN KEY (employee_email) REFERENCES employee (email)
+);
+
 CREATE TABLE car
 (
     license_plate TEXT PRIMARY KEY,
-    brand         TEXT    NOT NULL,
-    model         TEXT    NOT NULL,
-    year          INTEGER NOT NULL,
-    owner_email   TEXT    NOT NULL,
-    FOREIGN KEY (brand) REFERENCES car_brand (name),
+    brand         TEXT CHECK (brand IN
+                              ('AUDI', 'BMW', 'CHEVROLET', 'FORD', 'HONDA', 'HYUNDAI', 'MERCEDES-BENZ', 'NISSAN',
+                               'TOYOTA', 'VOLKSWAGEN')) NOT NULL,
+    model         TEXT                                  NOT NULL,
+    year          INTEGER                               NOT NULL,
+    owner_email   TEXT                                  NOT NULL,
     FOREIGN KEY (owner_email) REFERENCES customer (email)
 );
 
@@ -83,20 +90,8 @@ CREATE TABLE service_job
     FOREIGN KEY (appointment_id) REFERENCES appointment (id)
 );
 
-INSERT INTO car_brand (name)
-VALUES ('Audi'),
-       ('BMW'),
-       ('Chevrolet'),
-       ('Ford'),
-       ('Honda'),
-       ('Hyundai'),
-       ('Mercedes-Benz'),
-       ('Nissan'),
-       ('Toyota'),
-       ('Volkswagen');
-
 INSERT INTO car_center (name, work_with_brand)
-VALUES ('Autospace', 'Honda'),
+VALUES ('Autospace', 'HONDA'),
        ('Car Fixers', NULL),
        ('Wheels Doc', NULL);
 
@@ -142,13 +137,22 @@ VALUES ('ivan-nikolov@gmail.com', '1'),
        ('alexander.hr@abv.bg', '2'),
        ('petkov@gmail.com', '2');
 
+INSERT INTO employee_qualifications (employee_email, qualifications)
+VALUES ('ivan-nikolov@gmail.com', 'BRAKE_REPAIR'),
+       ('ivan-nikolov@gmail.com', 'OIL_CHANGE'),
+       ('georgiev.g@gmail.com', 'DIAGNOSTICS'),
+       ('p.dimitrov@gmail.com', 'WHEEL_ALIGNMENT'),
+       ('stefanov92@mail.bg', 'ENGINE_DIAGNOSTICS'),
+       ('nikolan@mail.bg', 'PAINT_AND_BODY_WORK'),
+       ('alexander.hr@abv.bg', 'FILTER_CHANGE');
+
 INSERT INTO car (license_plate, brand, model, year, owner_email)
-VALUES ('СА1234АВ', 'Audi', 'A4', '2022', 'ivan.ivanov@gmail.com'),
+VALUES ('СА1234АВ', 'AUDI', 'A4', '2022', 'ivan.ivanov@gmail.com'),
        ('PB2345EH', 'BMW', 'X5', '2020', 'stoyanova.elena@gmail.com'),
-       ('CO3453EE', 'Chevrolet', 'Cruze', '2021', 'petar.h.dimitrov@mail.bg'),
-       ('CT4560GH', 'Ford', 'Focus', '2019', 'g_georgiev@abv.bg'),
-       ('EB5679HD', 'Honda', 'Civic', '2020', 'm.petkova@mail.bg'),
-       ('CB6278KK', 'Hyundai', 'Elantra', '2022', 'ivan.ivanov@gmail.com');
+       ('CO3453EE', 'CHEVROLET', 'Cruze', '2021', 'petar.h.dimitrov@mail.bg'),
+       ('CT4560GH', 'FORD', 'Focus', '2019', 'g_georgiev@abv.bg'),
+       ('EB5679HD', 'HONDA', 'Civic', '2020', 'm.petkova@mail.bg'),
+       ('CB6278KK', 'HYUNDAI', 'Elantra', '2022', 'ivan.ivanov@gmail.com');
 
 INSERT INTO appointment (customer_email, car_center_id, car_license_plate, date_created, date_of_appointment,
                          has_passed)

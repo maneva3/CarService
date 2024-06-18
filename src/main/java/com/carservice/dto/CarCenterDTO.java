@@ -1,5 +1,6 @@
 package com.carservice.dto;
 
+import com.carservice.data.enums.CarBrand;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.ToString;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,9 +22,9 @@ public class CarCenterDTO {
 	private String name;
 
 	@Enumerated(EnumType.STRING)
-	private String workWithBrand;
+	private CarBrand workWithBrand;
 
-	private String appointments;
+	private List<String> appointments;
 
-	private String employees;
+	private List<String> employees;
 }

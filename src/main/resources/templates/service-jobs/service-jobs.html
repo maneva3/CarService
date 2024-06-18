@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments :: head}"><title>Service Jobs</title></head>
+<body>
+<!--<header th:replace="~{fragments :: headerCustomer}"></header>-->
+<h4 th:if="${serviceJobs.size() > 0}" th:text="'Service Jobs: ' + ${serviceJobs.size()}"></h4>
+<div class=" col-5">
+    <h3 th:unless="${serviceJobs} and ${serviceJobs.size()}">No service jobs have been added yet!</h3>
+    <table th:if="${serviceJobs.size() > 0}" class="table table-hover">
+        <tr>
+            <th>Employee</th>
+            <th>Type</th>
+            <th>Date Started</th>
+            <th>Date Finished</th>
+            <th>Price</th>
+            <th>State</th>
+            <th>Appointment</th>
+        </tr>
+        <tr th:each="serviceJob : ${serviceJobs}">
+            <td th:text="${serviceJob.employee.email}"></td>
+            <td th:text="${serviceJob.type}"></td>
+            <td th:text="${serviceJob.dateStarted}"></td>
+            <td th:text="${serviceJob.dateFinished}"></td>
+            <td th:text="${serviceJob.price}"></td>
+            <td th:text="${serviceJob.state}"></td>
+            <td th:text="${serviceJob.appointment.id}"></td>
+        </tr>
+    </table>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

@@ -6,6 +6,7 @@ import com.carservice.data.entities.ServiceJob;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -20,6 +21,7 @@ public class CreateAppointmentViewModel {
 
 	@NotEmpty(message = "The date of appointment must be set!")
 	@Future(message = "The date of appointment must be in the future!")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateOfAppointment;
 
 	@NotEmpty(message = "The service jobs must be set!")

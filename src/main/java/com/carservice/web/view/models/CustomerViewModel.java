@@ -5,24 +5,28 @@ import com.carservice.data.entities.Car;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class CustomerViewModel {
 	@Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
-	protected String email;
+	private String email;
 
 	@NotBlank(message = "The first name cannot be empty!")
-	protected String firstName;
+	private String firstName;
 
 	@NotBlank(message = "The last name cannot be empty!")
-	protected String lastName;
+	private String lastName;
 
 	@NotBlank(message = "The phone number cannot be empty!")
 	@Pattern(regexp = "^\\+359\\d{9}$", message = "The phone number must be in the format +359xxxxxxxxx!")
-	protected String phoneNumber;
+	private String phoneNumber;
 
 	private Set<Car> cars;
 

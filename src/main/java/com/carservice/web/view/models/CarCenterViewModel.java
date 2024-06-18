@@ -2,12 +2,16 @@ package com.carservice.web.view.models;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class CarCenterViewModel {
 	@NotBlank(message = "The name cannot be empty")
 	@Size(max = 20, message = "The name cannot be longer than {max} characters")

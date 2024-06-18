@@ -25,12 +25,13 @@ public class EmployeeViewController {
 	}
 
 	@GetMapping
-	public String allEmployees(Model model) {
-		final List<EmployeeViewModel> employees = employeeService.allEmployees()
+	public String displayAllEmployees(Model model) {
+		final List<EmployeeViewModel> employees = employeeService.findAll()
 				.stream()
 				.map(this::convertToEmployeeViewModel)
 				.collect(Collectors.toList());
+		System.out.println(employees);
 		model.addAttribute("employees", employees);
-		return "/employees";
+		return "employees/employees";
 	}
 }

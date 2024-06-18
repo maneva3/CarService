@@ -15,20 +15,20 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 public class CustomerDTO {
-    @Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
-    protected String email;
+	@Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
+	private String email;
 
-    @NotBlank(message = "The first name cannot be empty!")
-    protected String firstName;
+	@NotBlank(message = "The first name cannot be empty!")
+	private String firstName;
 
-    @NotBlank(message = "The last name cannot be empty!")
-    protected String lastName;
+	@NotBlank(message = "The last name cannot be empty!")
+	private String lastName;
 
-    @NotBlank(message = "The phone number cannot be empty!")
-    @Pattern(regexp = "^\\+359\\d{9}$", message = "The phone number must be in the format +359xxxxxxxxx!")
-    protected String phoneNumber;
+	@NotBlank(message = "The phone number cannot be empty!")
+	@Pattern(regexp = "^\\+359\\d{9}$", message = "The phone number must be in the format +359xxxxxxxxx!")
+	private String phoneNumber;
 
-    private Set<Car> cars;
+	private Set<Car> cars;
 
-    private Set<Appointment> appointments;
+	private Set<Appointment> appointments;
 }

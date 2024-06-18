@@ -5,8 +5,9 @@ import com.carservice.data.enums.JobType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,7 +15,8 @@ import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "service_job")
 public class ServiceJob {
@@ -24,7 +26,7 @@ public class ServiceJob {
 	private Integer id;
 
 	@ManyToOne(targetEntity = Employee.class)
-	@JoinColumn(name = "employee")
+	@JoinColumn(name = "employee_email")
 	private Employee employee;
 
 	@Column(name = "type")
@@ -33,9 +35,11 @@ public class ServiceJob {
 	private JobType type;
 
 	@Column(name = "date_started")
+	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate dateStarted;
 
 	@Column(name = "date_finished")
+	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate dateFinished;
 
 	@Column(name = "price")
@@ -51,4 +55,14 @@ public class ServiceJob {
 	@JoinColumn(name = "appointment_id")
 	private Appointment appointment;
 
+	@Override
+	public String toString() {
+		return "ServiceJob{" +
+				", type=" + type +
+				", dateStarted=" + dateStarted +
+				", dateFinished=" + dateFinished +
+				", price=" + price +
+				", state=" + state +
+				'}';
+	}
 }

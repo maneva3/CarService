@@ -4,15 +4,17 @@ import com.carservice.data.enums.CarBrand;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "car_center")
 public class CarCenter {
@@ -26,8 +28,8 @@ public class CarCenter {
 	@Size(max = 20, message = "The name cannot be longer than {max} characters")
 	private String name;
 
-	@Column(name = "work_with_brand")
 	@Enumerated(EnumType.STRING)
+	@Column(name = "work_with_brand")
 	private CarBrand workWithBrand;
 
 	@OneToMany(targetEntity = Appointment.class, mappedBy = "carCenter")
@@ -35,4 +37,13 @@ public class CarCenter {
 
 	@OneToMany(targetEntity = Employee.class, mappedBy = "workingAt")
 	private Set<Employee> employees;
+
+	@Override
+	public String toString() {
+		return "CarCenter{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", workWithBrand=" + workWithBrand +
+				'}';
+	}
 }

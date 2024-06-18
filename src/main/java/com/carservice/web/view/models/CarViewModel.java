@@ -7,7 +7,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,6 +17,8 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class CarViewModel {
 
 	@NotBlank(message = "License plate cannot be blank!")

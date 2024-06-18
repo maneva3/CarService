@@ -3,16 +3,18 @@ package com.carservice.data.entities;
 import com.carservice.data.enums.CarBrand;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
+@Getter
+@Setter
 @Table(name = "car")
 public class Car {
 	@Id
@@ -47,5 +49,15 @@ public class Car {
 
 	public void changeLicensePlate(String newLicensePlate) {
 		this.licensePlate = newLicensePlate;
+	}
+
+	@Override
+	public String toString() {
+		return "Car{" +
+				"licensePlate='" + licensePlate + '\'' +
+				", brand=" + brand +
+				", model='" + model + '\'' +
+				", year=" + year +
+				'}';
 	}
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments :: head}"><title>Employees</title></head>
+<body>
+<header th:replace="~{fragments :: headerEmployee}"></header>
+<div class=" col-5">
+    <h3 th:unless="${employees} and ${employees.size()}">No employees have been added yet!</h3>
+    <table th:if="${employees.size() > 0}" class="table table-hover">
+        <tr>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone number</th>
+            <th>Qualifications</th>
+            <th>Working at</th>
+            <th>Working on</th>
+        </tr>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.phoneNumber}"></td>
+            <td th:text="${employee.qualifications}"></td>
+            <td th:text="${employee.workingAt.getName()}"></td>
+            <td th:each="job : ${employee.workingOn}" th:text="${job.type}"></td>
+        </tr>
+    </table>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

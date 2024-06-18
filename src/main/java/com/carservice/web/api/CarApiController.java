@@ -22,11 +22,6 @@ public class CarApiController {
 		return carService.allCars();
 	}
 
-	@GetMapping("/{vin}")
-	public CarDTO findCarByVin(@PathVariable("vin") String vin) {
-		return carService.findCarByVin(vin);
-	}
-
 	@GetMapping("/{licensePlate}")
 	public CarDTO findCarByLicensePlate(@PathVariable("licensePlate") String licensePlate) {
 		return carService.findCarByLicensePlate(licensePlate);
@@ -37,10 +32,11 @@ public class CarApiController {
 		return carService.updateLicensePlate(modelMapper.map(car, CarDTO.class), licensePlate);
 	}*/
 
-	@DeleteMapping("/{vin}")
-	public void deleteCar(@PathVariable("vin") String vin) {
-		carService.deleteCar(vin);
+	@DeleteMapping("/{licensePlate}")
+	public void deleteCar(@PathVariable("licensePlate") String licensePlate) {
+		carService.deleteCar(licensePlate);
 	}
+
 
 	@GetMapping("/brand/{brand}")
 	public List<CarDTO> findCarsByBrand(@PathVariable("brand") CarBrand brand) {

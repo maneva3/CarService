@@ -22,9 +22,9 @@ public class EmployeeApiController {
 
 	@GetMapping("/")
 	public List<EmployeeDTO> allEmployees() {
-		return employeeService.allEmployees();
+		return employeeService.findAll();
 	}
-	
+
 	@GetMapping("/find-by-phone-number/{phoneNumber}")
 	public EmployeeDTO findEmployeeByPhoneNumber(String phoneNumber) {
 		return employeeService.findEmployeeByPhoneNumber(phoneNumber);

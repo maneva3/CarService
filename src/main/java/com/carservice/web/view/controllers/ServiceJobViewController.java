@@ -26,10 +26,10 @@ public class ServiceJobViewController {
 	}
 
 	@GetMapping
-	public String showServiceJobs(Model model) {
+	public String allServiceJobs(Model model) {
 		final List<ServiceJobViewModel> serviceJobs = serviceJobService.findAllServiceJobs().stream()
 				.map(this::convertToServiceJobViewModel).collect(toList());
 		model.addAttribute("serviceJobs", serviceJobs);
-		return "/service-jobs";
+		return "/service-jobs/service-jobs";
 	}
 }

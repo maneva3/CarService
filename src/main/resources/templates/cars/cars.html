@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments :: head}"><title>Cars</title></head>
+<body>
+<header th:replace="~{fragments :: headerCustomer}"></header>
+<h4 th:if="${cars.size() > 0}" th:text="'Cars: ' + ${cars.size()}"></h4>
+<div class=" col-5">
+    <h3 th:unless="${cars} and ${cars.size()}">No cars have been added yet!</h3>
+    <table th:if="${cars.size() > 0}" class="table table-hover">
+        <th>License plate</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.licensePlate}"></td>
+            <td th:text="${car.brand}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.year.year}"></td>
+            <td><a type="button" class="btn btn-info" th:href="@{'/cars/edit-car/' + ${car.licensePlate}}">Edit</a></td>
+            <td><a type="button" class="btn btn-danger"
+                   th:href="@{'/cars/delete-car/' + ${car.licensePlate}}">Delete</a></td>
+            <td><a type="button" class="btn btn-primary"
+                   th:href="@{'/cars/edit-car/' + ${car.licensePlate} + '/service-jobs'}">Service jobs</a></td>
+        </tr>
+    </table>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>
