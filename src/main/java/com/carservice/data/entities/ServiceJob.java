@@ -63,6 +63,7 @@ public class ServiceJob {
 				", dateFinished=" + dateFinished +
 				", price=" + price +
 				", state=" + state +
+				", employee=" + (employee != null ? employee.getEmail() : "none") +
 				'}';
 	}
 }

@@ -8,22 +8,20 @@
     <h3 th:unless="${serviceJobs} and ${serviceJobs.size()}">No service jobs have been added yet!</h3>
     <table th:if="${serviceJobs.size() > 0}" class="table table-hover">
         <tr>
-            <th>Employee</th>
             <th>Type</th>
             <th>Date Started</th>
             <th>Date Finished</th>
             <th>Price</th>
             <th>State</th>
-            <th>Appointment</th>
+            <th>Employee</th>
         </tr>
         <tr th:each="serviceJob : ${serviceJobs}">
-            <td th:text="${serviceJob.employee.email}"></td>
             <td th:text="${serviceJob.type}"></td>
             <td th:text="${serviceJob.dateStarted}"></td>
             <td th:text="${serviceJob.dateFinished}"></td>
             <td th:text="${serviceJob.price}"></td>
             <td th:text="${serviceJob.state}"></td>
-            <td th:text="${serviceJob.appointment.id}"></td>
+            <td th:text="${serviceJob.employee != null ? serviceJob.employee.email : 'N/A' }"></td>
         </tr>
     </table>
 </div>

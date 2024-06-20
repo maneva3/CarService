@@ -20,15 +20,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private final EmployeeRepository repository;
 	private final ModelMapper modelMapper;
 
-	//	private EmployeeDTO convertToEmployeeDTO(Employee employee) {
-//		return modelMapper.map(employee, EmployeeDTO.class);
-//	}
 	private EmployeeDTO convertToEmployeeDTO(Employee employee) {
-		EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
-		System.out.println("Employee: " + employee);
-		System.out.println("EmployeeDTO: " + employeeDTO);
-		return employeeDTO;
+		return modelMapper.map(employee, EmployeeDTO.class);
 	}
+//	private EmployeeDTO convertToEmployeeDTO(Employee employee) {
+//		EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
+//		System.out.println("Employee: " + employee);
+//		System.out.println("EmployeeDTO: " + employeeDTO);
+//		return employeeDTO;
+//	}
 
 	@Override
 	public List<EmployeeDTO> findAll() {

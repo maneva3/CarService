@@ -46,7 +46,6 @@ public class Employee extends User {
 				", phone number='" + phoneNumber +
 				", qualifications=" + qualifications +
 				", workingAt=" + workingAt.getName() +
-				", workingOn=" + workingOn.stream().map(ServiceJob::getType) +
 				'}';
 	}
 }

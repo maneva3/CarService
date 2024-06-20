@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.math.BigDecimal;
@@ -34,7 +33,6 @@ public class ServiceJobDTO {
 	private LocalDate dateStarted;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "date_finished")
 	private LocalDate dateFinished;
 
 	@PositiveOrZero(message = "The price can't be negative")
