@@ -4,6 +4,7 @@ import com.carservice.data.entities.ServiceJob;
 import com.carservice.data.enums.JobState;
 import com.carservice.data.enums.JobType;
 import com.carservice.dto.ServiceJobDTO;
+import com.carservice.exceptions.ServiceJobNotFoundException;
 import com.carservice.repository.ServiceJobRepository;
 import com.carservice.services.ServiceJobService;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,9 @@ public class ServiceJobServiceImpl implements ServiceJobService {
 
 	@Override
 	public ServiceJobDTO findServiceJobById(int id) {
-		return modelMapper.map(repository.findById(id), ServiceJobDTO.class);
+		return modelMapper.map(repository.findById(id)
+				.orElseThrow(() -> new ServiceJobNotFoundException("ServiceJob with id " + id + " not found")), ServiceJobDTO.class);
+//		return modelMapper.map(repository.findById(id), ServiceJobDTO.class);
 	}
 
 	@Override

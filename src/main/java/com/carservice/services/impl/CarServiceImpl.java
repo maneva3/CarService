@@ -3,6 +3,7 @@ package com.carservice.services.impl;
 import com.carservice.data.entities.Car;
 import com.carservice.data.enums.CarBrand;
 import com.carservice.dto.CarDTO;
+import com.carservice.exceptions.CarNotFoundException;
 import com.carservice.repository.CarRepository;
 import com.carservice.services.CarService;
 import jakarta.validation.Valid;
@@ -33,7 +34,9 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public CarDTO findCarByLicensePlate(String licensePlate) {
-		return convertToCarDTO(repository.findByLicensePlate(licensePlate));
+		return modelMapper.map(repository.findById(licensePlate)
+				.orElseThrow(() -> new CarNotFoundException("Car with license plate " + licensePlate + " not found")), CarDTO.class);
+//		return convertToCarDTO(repository.findByLicensePlate(licensePlate));
 	}
 
 	@Override
@@ -42,7 +45,7 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public Car updateLicensePlate(CarDTO carDTO, String licensePlate) {
+	public Car update(CarDTO carDTO, String licensePlate) {
 		Car car = modelMapper.map(carDTO, Car.class);
 		car.changeLicensePlate(licensePlate);
 		return repository.save(car);

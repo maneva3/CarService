@@ -3,6 +3,7 @@ package com.carservice.services.impl;
 import com.carservice.data.entities.Employee;
 import com.carservice.data.enums.JobType;
 import com.carservice.dto.EmployeeDTO;
+import com.carservice.exceptions.EmployeeNotFoundException;
 import com.carservice.repository.EmployeeRepository;
 import com.carservice.services.EmployeeService;
 import jakarta.validation.Valid;
@@ -23,12 +24,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDTO convertToEmployeeDTO(Employee employee) {
 		return modelMapper.map(employee, EmployeeDTO.class);
 	}
-//	private EmployeeDTO convertToEmployeeDTO(Employee employee) {
-//		EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
-//		System.out.println("Employee: " + employee);
-//		System.out.println("EmployeeDTO: " + employeeDTO);
-//		return employeeDTO;
-//	}
 
 	@Override
 	public List<EmployeeDTO> findAll() {
@@ -37,7 +32,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public EmployeeDTO findEmployeeByEmail(@Valid String email) {
-		return modelMapper.map(repository.findByEmail(email), EmployeeDTO.class);
+		return modelMapper.map(repository.findById(email)
+				.orElseThrow(() -> new EmployeeNotFoundException("Employee with email " + email + " not found")), EmployeeDTO.class);
+//		return modelMapper.map(repository.findByEmail(email), EmployeeDTO.class);
 	}
 
 	@Override

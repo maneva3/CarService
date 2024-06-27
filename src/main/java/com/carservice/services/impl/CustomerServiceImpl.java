@@ -2,6 +2,7 @@ package com.carservice.services.impl;
 
 import com.carservice.data.entities.Customer;
 import com.carservice.dto.CustomerDTO;
+import com.carservice.exceptions.CustomerNotFoundException;
 import com.carservice.repository.CustomerRepository;
 import com.carservice.services.CustomerService;
 import jakarta.validation.Valid;
@@ -35,7 +36,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO findCustomerByEmail(@Valid String customerEmail) {
-		return convertToCustomerDTO(repository.findByEmail(customerEmail));
+		return modelMapper.map(repository.findById(customerEmail)
+				.orElseThrow(() -> new CustomerNotFoundException("Customer with email " + customerEmail + " not found")), CustomerDTO.class);
+//		return convertToCustomerDTO(repository.findByEmail(customerEmail));
 	}
 
 	@Override

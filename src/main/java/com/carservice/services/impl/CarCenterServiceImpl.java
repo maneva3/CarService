@@ -3,6 +3,7 @@ package com.carservice.services.impl;
 import com.carservice.data.entities.CarCenter;
 import com.carservice.data.enums.CarBrand;
 import com.carservice.dto.CarCenterDTO;
+import com.carservice.exceptions.CarCenterNotFoundException;
 import com.carservice.repository.CarCenterRepository;
 import com.carservice.services.CarCenterService;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,9 @@ public class CarCenterServiceImpl implements CarCenterService {
 
 	@Override
 	public CarCenterDTO findCarCenterById(int id) {
-		return modelMapper.map(repository.findById(id), CarCenterDTO.class);
+		return modelMapper.map(repository.findById(id)
+				.orElseThrow(() -> new CarCenterNotFoundException("Car center with id " + id + " not found")), CarCenterDTO.class);
+//		return modelMapper.map(repository.findById(id), CarCenterDTO.class);
 	}
 
 	@Override
@@ -38,12 +41,12 @@ public class CarCenterServiceImpl implements CarCenterService {
 		return repository.save(modelMapper.map(carCenterDTO, CarCenter.class));
 	}
 
-//	@Override
-//	public CarCenter update(int id, CarCenterDTO carCenterDTO) {
-//		CarCenter carCenter = modelMapper.map(carCenterDTO, CarCenter.class);
-//		carCenter.setId(id);
-//		return repository.save(carCenter);
-//	}
+	@Override
+	public CarCenter update(int id, CarCenterDTO carCenterDTO) {
+		CarCenter carCenter = modelMapper.map(carCenterDTO, CarCenter.class);
+		carCenter.setId(id);
+		return repository.save(carCenter);
+	}
 
 	@Override
 	public void delete(int id) {

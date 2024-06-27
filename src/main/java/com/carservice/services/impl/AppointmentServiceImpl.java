@@ -2,6 +2,7 @@ package com.carservice.services.impl;
 
 import com.carservice.data.entities.Appointment;
 import com.carservice.dto.AppointmentDTO;
+import com.carservice.exceptions.AppointmentNotFoundException;
 import com.carservice.repository.AppointmentRepository;
 import com.carservice.services.AppointmentService;
 import lombok.AllArgsConstructor;
@@ -30,11 +31,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 	@Override
 	public AppointmentDTO findAppointmentById(int id) {
-		return convertToAppointmentDTO(repository.findById(id).orElse(null));
+		return modelMapper.map(repository.findById(id)
+				.orElseThrow(() -> new AppointmentNotFoundException("Appointment with id " + id + " not found")), AppointmentDTO.class);
+//		return convertToAppointmentDTO(repository.findById(id).orElse(null));
 	}
 
 	@Override
-	public Appointment createAppointment(AppointmentDTO appointmentDTO) {
+	public Appointment create(AppointmentDTO appointmentDTO) {
 		return repository.save(modelMapper.map(appointmentDTO, Appointment.class));
 	}
 
