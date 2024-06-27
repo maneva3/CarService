@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{fragments :: head}"><title>Service Jobs</title></head>
 <body>
-<!--<header th:replace="~{fragments :: headerCustomer}"></header>-->
-<h4 th:if="${serviceJobs.size() > 0}" th:text="'Service Jobs: ' + ${serviceJobs.size()}"></h4>
 <div class=" col-5">
     <h3 th:unless="${serviceJobs} and ${serviceJobs.size()}">No service jobs have been added yet!</h3>
     <table th:if="${serviceJobs.size() > 0}" class="table table-hover">

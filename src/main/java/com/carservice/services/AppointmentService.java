@@ -13,7 +13,7 @@ public interface AppointmentService {
 
 	AppointmentDTO findAppointmentById(@Min(1) int id);
 
-	Appointment createAppointment(@Valid AppointmentDTO appointmentDTO);
+	Appointment create(@Valid AppointmentDTO appointmentDTO);
 
 //	Appointment updateAppointment(@Min(1) int id, @Valid AppointmentDTO appointmentDTO);
 

@@ -15,7 +15,7 @@ public interface CarCenterService {
 
 	CarCenter create(@Valid CarCenterDTO carCenterDTO);
 
-//	CarCenter update(@Min(1) int id, @Valid CarCenterDTO carCenterDTO);
+	CarCenter update(@Min(1) int id, @Valid CarCenterDTO carCenterDTO);
 
 	void delete(@Min(1) int id);
 

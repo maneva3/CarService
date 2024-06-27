@@ -1,23 +1,25 @@
-package com.carservice.web.api;
+package com.carservice.web.view.controllers;
 
 import com.carservice.data.entities.User;
 import com.carservice.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/user")
+@Controller
 @AllArgsConstructor
-public class UserApiController {
+@RequestMapping("/user")
+public class UserViewController {
 	private final UserService userService;
 
-	@PostMapping("/register")
-	public ResponseEntity<User> registerUser(@RequestBody User user, @RequestParam String userType) {
-		User savedUser = userService.registerUser(user, userType);
-		return ResponseEntity.ok(savedUser);
+	// Serve the login page
+	@GetMapping("/login")
+	public String loginPage() {
+		return "login";
 	}
 
+	// Handle login form submission
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
 		try {
@@ -30,5 +32,18 @@ public class UserApiController {
 		} catch (Exception e) {
 			return ResponseEntity.status(401).body("User not found");
 		}
+	}
+
+	// Serve the registration page
+	@GetMapping("/register")
+	public String registerPage() {
+		return "register";
+	}
+
+	// Handle registration form submission
+	@PostMapping("/register")
+	public ResponseEntity<String> register(@RequestBody User user) {
+		User savedUser = userService.saveUser(user);
+		return ResponseEntity.ok("User registered successfully");
 	}
 }

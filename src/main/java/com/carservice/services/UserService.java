@@ -7,5 +7,7 @@ public interface UserService {
 
 	User loadUserByUsername(String username);
 
+	User registerUser(User user, String role);
+
 	boolean checkPassword(User user, String rawPassword);
 }

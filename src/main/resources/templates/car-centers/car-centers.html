@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments :: head}"><title>Car centers</title></head>
+<body>
+<header th:replace="~{fragments :: headerEmployee}"></header>
+<div class=" col-5">
+    <h3 th:unless="${carCenters} and ${carCenters.size()}">No car centers have been added yet!</h3>
+    <table th:if="${carCenters.size() > 0}" class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Working with</th>
+        </tr>
+        <tr th:each="carCenter : ${carCenters}">
+            <td th:text="${carCenter.name}"></td>
+            <td th:text="${carCenter.workingWith}"></td>
+        </tr>
+    </table>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

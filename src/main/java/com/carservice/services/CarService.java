@@ -15,7 +15,7 @@ public interface CarService {
 
 	Car create(@Valid CarDTO carDTO);
 
-	Car updateLicensePlate(@Valid CarDTO carDTO, String licensePlate);
+	Car update(@Valid CarDTO carDTO, String licensePlate);
 
 	void deleteCar(String vin);
 
